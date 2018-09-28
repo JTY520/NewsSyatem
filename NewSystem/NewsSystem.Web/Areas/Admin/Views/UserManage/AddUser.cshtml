@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Account.css" rel="stylesheet" />
+<script src="~/Scripts/AccountManage/AddUser.js"></script>
+<div class="add-user">
+    <div class="add-user-txt">添加用户</div>
+    <form class="add-user-form">
+       <div class="add-user-in">
+
+       </div>
+         <span class="in-txt">帐号:</span>
+        <input class="in-text" id="UserAccount" name="UserAccount" type="text">
+        <div class="add-user-in">
+            <span class="in-txt" >是否为管理员:</span>
+           <input type="radio" name="IsAdmin" value="true" />是
+           <input type="radio" name="IsAdmin" value="false" checked />否
+        </div>
+        
+        <div class="add-user-in">
+            <span class="in-txt">密码:</span>
+            <input class="in-text" name="Password" type="password">
+        </div>
+        
+        <div class="add-user-in">
+            <span class="in-txt"> 确认密码:</span>
+            <input class="in-text" name="NewPassword" type="password">
+        </div>
+        <div class="add-user-in">
+            <input type="submit" onclick="return AddUser();" value="Sign Up">
+        </div>
+        
+    </form>
+</div>
+   
+

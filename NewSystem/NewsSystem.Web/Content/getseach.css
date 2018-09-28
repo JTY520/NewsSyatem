@@ -1,0 +1,307 @@
+﻿.news-right-hd
+{
+    background-color: #E4E4E4;
+    height: 35px;
+    float:left;
+    width:300px;
+    margin-bottom:10px;
+    line-height:35px;
+}
+.news-right-hd h3
+{
+    color: #B50000;
+    float: left;
+    width:300px;
+    height:22px;
+    font-family: microsoft yahei;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 10px;
+    float:left;
+    margin-bottom:10px;
+    margin-top:0;
+}
+.news-doc
+{
+    width:650px;
+    float:left;
+    height:150px;
+}
+.news-doc img
+{
+    margin-top:25px;
+    width:650px;
+    height:105px;
+    float:left
+}
+.hot-today
+{
+    width:650px;
+    float:left;
+    height:220px;
+    margin-top:30px;
+}
+.hot-today-imgs
+{
+    list-style:none;
+    font-size:14px;
+    width:650px;
+    margin: auto;
+    height:155px;
+    text-align:center;
+    line-height:90px;
+    overflow: hidden;
+    position: relative;
+} 
+.hot-today-imgs ul 
+{
+    list-style:none;
+     position:absolute;
+     color:white;
+     height:135px;
+     margin:0;
+}
+.hot-today-imgs ul li
+{
+    list-style:none;
+    height:135px;
+    width: 169.5px;
+    float:left;
+    text-align:center;
+    line-height:90px;
+    cursor:pointer;
+}
+.hot-today-imgs ul li:last-child
+{
+    list-style:none;
+    height:135px;
+    width: 140px;
+    float:left;
+    text-align:center;
+    line-height:90px;
+    cursor:pointer;
+}
+.hot-today-imgs ul li a img
+{
+    width:140px;
+    height:105px;
+    float:left
+}
+.hot-today-imgs ul li a p:hover
+{
+    color:red;
+}
+.hot-today-imgs ul li a p
+{
+    width:140px;
+    height:30px;
+    text-align:center;
+    line-height:30px;
+    font-style: normal;
+    font-weight: 400;
+    color:#666;
+    float:left;
+    color:#000;
+    font-size:14px;
+}
+
+.newsContent
+{
+    width:650px;
+    font-size: 16px;
+    font-family: microsoft yahei;
+    line-height: 30px;
+    margin:auto;
+    float:left;
+}
+.blank
+{
+    height:40px;
+    margin-top:10px;
+    float:left;
+    width:100%;
+}
+.blank1
+{
+    height:10px;
+    width:100%;
+    margin-top:10px;
+    float:left;
+}
+.sea-typelist
+{
+    width:650px;
+    height:21px;
+    margin-bottom:5px;
+}
+.f-sea
+{
+    width:660px;
+    height:60px;
+}
+.sea-box
+{
+    border: 1px #666 solid;
+    font-size: 16px;
+    float: left;
+    height: 38px;
+    padding: 4px 10px;
+    width: 638px;
+}
+.sea-input
+{
+    border: 0;
+    font-size: 16px;
+    float: left;
+    height: 30px;
+    padding: 4px 10px;
+    width: 482px;
+}
+.sea-type
+{
+    float: left;
+    height: 26px;
+    font-size: 14px;
+    width: 58px;
+    padding-top: 5px;
+    border-left:1px #808080 solid;
+}
+.sea-type select
+{
+    border:none;
+}
+.sea-btn {
+    border: none;
+    float: right;
+    height: 33px;
+    margin: 2px;
+    width: 71px;
+    background-image: url('../Images/sea-btn.png');
+}
+.sea-result
+{
+    float:right;
+}
+.sea-num
+{
+    font-weight: 700;
+    color: #555;
+}
+.newTitle
+{
+    font-family: '\5FAE\8F6F\96C5\9ED1';
+    font-weight:bold;
+    font-size:28px;
+}
+.newsTime
+{
+    font-size: 14px;
+    font-family: '微软雅黑';
+    height:22px;
+}
+.article_text
+{
+    width:650px;
+    font-size: 16px;
+    font-family: microsoft yahei;
+    line-height: 30px;
+    color: #333;
+    text-align: justify;
+}
+.img-txt img
+{
+    display:none;
+}
+.img-txt p img
+{
+    display:none
+}
+.p-content
+{
+    color: #666;
+    line-height: 18px;
+    padding-bottom: 15px;
+    height: 39px;
+
+}
+.p-pic
+{
+    width:120px;
+    height:95px;
+    margin-right:20px;
+    margin-bottom:10px;
+    float:left;
+}
+.p-pic img
+{
+    width:120px;
+    height:95px;
+    margin-top:20px;
+}
+.p-text
+{
+    width:500px;
+    height:120px;
+    float:left;
+}
+
+.p-foot
+{
+    float: left;
+    width: 500px;
+    line-height: 20px;
+    overflow: hidden;
+    color: #000;
+}
+.p-time
+{
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+    width:200px;
+    height:20px;
+    font-size:14px;
+    float:left;
+    line-height:20px;
+}
+.p-type
+{
+    width:500px;
+    height:20px;
+    float:left;
+}
+.sea-line
+{
+    width:650px;
+    height:1px;
+    background-color:#ddd;
+    margin-top:2px;
+    margin-bottom:3px;
+    float:left;
+}
+.sea-resultlist
+{
+    margin-top:20px;
+    width:650px;
+    height:100%;
+}
+.seach-list
+{
+    width:650px;
+    height:133px;
+    padding:12px 0 7px;
+    border-bottom:1px #ddd solid;
+    float:left;
+}
+.seach-list :hover
+{
+    background-color:#F9FAFD;
+}
+.p-page
+{
+    color:#000;
+    float:left;
+}
+.p-page tr td
+{
+    color:#000 ;
+}

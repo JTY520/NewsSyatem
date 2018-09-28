@@ -1,0 +1,23 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.MenuItems>
+
+@if (Model != null)
+{
+    <ul class="sidebar-menu">
+        @foreach (var item in Model)
+        {
+            if (item.Children != null)
+            {
+                <li class="treeview">
+                    <a><i class="fa fa-circle-o"></i> @item.Name <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                    @Html.Partial("_ChildrenMeun", item.Children)
+                </li>
+            }
+            else
+            {
+                <li class="treeview">
+                    <a href="@item.Url"><i class="fa fa-circle-o"></i> @item.Name </a>
+                </li>
+            }
+        }
+    </ul>
+}

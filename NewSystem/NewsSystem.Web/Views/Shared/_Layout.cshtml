@@ -1,0 +1,92 @@
+﻿@using NewsSystem.EntityFramwork
+@{
+    User person = Context.Session["User"] as User;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21CN新闻</title>
+    <link href="~/Content/Lay.css" rel="stylesheet" />
+    <link href="~/Content/Menu.css" rel="stylesheet" />
+    <link href="~/Content/Account.css" rel="stylesheet" />
+    <link href="~/Content/HomeIndex.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/LunBo.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Account/getLogin.js"></script>
+
+    <script src="~/Scripts/Account/account.js"></script>
+    <script src="~/Scripts/Account/getRegister.js"></script>
+    <script src="~/Scripts/Account/Logout.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-center">
+            <div class="header-left">
+                <a href="#">21CN首页</a>
+                <em>|</em>
+                <a href="#">21CN看荐</a>
+            </div>
+            <div class="header-right">
+              
+                @if (person == null)
+                {
+                    <a  href="javascript:showLogin()">登录</a>
+                    <em>|</em>
+                    <a href="javascript:showRegister()">注册</a>
+                }
+                else
+                {
+                    if (person.NickName == null)
+                    {
+                        <a target="_blank" href="/Account/Personally?account=@person.UserAccout">欢迎你，@person.UserAccout.Substring(0, 3) **** @person.UserAccout.Substring(7)</a>
+                    }
+                    else
+                    {
+                        <a target="_blank" href="/Account/Personally?account=@person.UserAccout">欢迎你，@person.NickName</a>
+                    }
+                    <em>|</em>
+                    <a onclick="javascript:return Logout()">注销</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="advertise">
+        <img src="~/Images/Adver-Image.png" />
+    </div>
+    <div class="Icon">
+        <div class="Icon-Image">
+            <a target="_self" href="/Home/Index/">
+                <img src="~/Images/title.png" />
+            </a>
+            <div class="Icon-Search">
+                <form action="/News/GetNewsBySearch" method="post">
+                    <input type="text" name="str" class="Search-Text" />
+                    <button class="Search-btn" type="submit"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="new-m">
+        @Html.Action("NewsType", "Home")
+    </div>
+    <div id="login">
+        <a class="close" href="javascript:hide()">X</a>
+        @Html.Partial("_Login")
+    </div>
+    <div id="register">
+        <a class="close" href="javascript:hide()">X</a>
+        @Html.Partial("_Register")
+    </div>
+    <div id="close"></div>
+    <div style="width:100%;height:100%;float:left">
+        @RenderBody()
+    </div>
+</body>
+</html>

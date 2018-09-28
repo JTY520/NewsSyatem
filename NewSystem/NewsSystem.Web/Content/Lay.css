@@ -1,0 +1,124 @@
+﻿body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color:white;
+    list-style:none;
+}
+.header
+{
+    height:35px;
+    background-color:#F4F4F4;
+    width:100%;
+}
+.header-center
+{
+    width:980px;
+    height:35px;
+    color:#666;
+    line-height:35px;
+    background-color:#F4F4F4;
+    margin:auto;
+}
+.header-left
+{
+    float:left;
+    width:200px;
+}
+.header-left em
+{
+    font-style:normal;
+    font-weight:normal;
+    color:cornflowerblue;
+}
+.header-right
+{
+    float:right;
+}
+.header-left a
+{
+     font-family:Verdana, Geneva, Tahoma, sans-serif;
+      color:cornflowerblue;
+      font-size:12px;
+
+}
+.header-left a:link {
+	text-decoration: none;
+}
+.header-left  a:visited {
+	text-decoration: none;
+}
+.header-left a:hover {
+	text-decoration: none;
+	color: red;
+}
+.header-left  a:active {
+	text-decoration: none;
+}
+.meunlist
+{
+    font-size:12px;
+    background-color:white;
+    height:34px;
+    width:100%;
+}
+.meunlist-center
+{
+    height:34px;
+    width:980px;
+    margin:auto;
+    line-height:34px;
+}
+.meunlist-center span
+{
+    font-style:normal;
+    font-weight:normal;
+    color:cornflowerblue;
+}
+.advertise
+{
+    width:980px;
+    height:120px;
+    margin:auto;
+    background-color:white;
+}
+.Icon
+{
+    height:68px;
+    background-color:white;
+}
+.Icon-Image
+{
+    height:68px;
+    width:980px;
+    margin:auto;
+   margin-top:10px;
+}
+.Icon-Search
+{
+    margin-top:17px;
+    height:34px;
+    width:349px;
+  
+    float:right;
+}
+.Search-Text
+{ 
+    border:1px solid #ddd;
+    border-right:none;
+    background-color:#eee;
+    height:34px;
+    width:313px;
+    float:left;
+}
+.Search-btn {
+    background-image: url('../Images/Icon_btn.png');
+    float: left;
+    width: 30px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+.newsbody
+{
+    width:980px;
+    margin:auto;
+}

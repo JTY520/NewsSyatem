@@ -1,0 +1,145 @@
+﻿
+.login-right
+{
+    float:right;
+    width:350px;
+    height:200px;
+}
+
+.div-login span,em{
+    line-height:50px;
+    font-size:16px;
+    color:#ffffff;
+}
+.div-login span a{
+    line-height:50px;
+    font-size:16px;
+    color:#ffffff;
+}
+
+.add-user{
+    margin:auto;
+    margin-top:20px;
+    width:525px;
+    height:670px;
+    padding-top:30px;
+    text-align:center;
+}
+.add-user-txt
+{
+    
+     color:#000000;
+     border-bottom-color: #1161ee;
+     width:100%;
+     font-size: 22px;
+     height:auto;
+     border-bottom: 2px solid;
+     margin-bottom:30px;
+}
+.add-user-form{
+
+}
+.add-user-in{
+    width:auto;
+    height:80px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:30px;
+}
+.in-txt{
+    color:black;
+    font-size: 75%;
+    font-weight: bold;
+    width:auto;
+    margin:auto
+}
+.in-text{
+    border:1px solid;
+    width:auto;
+        margin:auto
+}
+
+
+#login, #register {
+    display: none;
+    border: 1px solid rgba(0,0,0,0.3);
+    height: 450px;
+    width: 500px;
+    position: absolute; /*让节点脱离文档流,我的理解就是,从页面上浮出来,不再按照文档其它内容布局*/
+    top: 10%; /*节点脱离了文档流,如果设置位置需要用top和left,right,bottom定位*/
+    left: 26%;
+    z-index: 1050; /*个人理解为层级关系,由于这个节点要在顶部显示,所以这个值比其余节点的都大*/
+    background: white;
+    border-radius:10px;
+    position:fixed;
+    text-align:center;
+}
+
+#close {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8; /*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/
+    filter: alpha(opacity=80);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: silver;
+    position:fixed;
+    font-size:16px;
+}
+
+.signform{
+    width: 350px;
+    height: auto;
+    margin-top:10px;
+    padding: 0;
+    font-size: 16px;
+    text-align:center;
+    margin:auto
+}
+ .signheader {
+        display: block;
+        font-size: 30px;
+        font-weight: 700;
+        padding: 35px 0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 30px;
+}
+ .s-input{
+     width:250px;
+     height:40px;
+     border-radius:25px;
+     border:1px solid #5e5e5e;
+     margin:auto;
+     margin-bottom:25px;
+ }
+ .s-btn{
+     width:250px;
+     height:40px;
+     margin:auto;
+     background-color:#1161ee;
+     border-radius:20px;
+     color:#ffffff;
+ }
+ /*.s-input-account{
+     width:200px;
+     height:100%;
+ }
+.s-input-pass {
+    width:160px;
+    height:100%;
+}
+.s-show-btn {
+
+}*/
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px 18px 16px 18px;
+    opacity: .8;
+    font-size: 16px;
+}

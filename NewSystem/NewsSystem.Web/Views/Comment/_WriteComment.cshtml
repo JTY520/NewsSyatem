@@ -1,0 +1,25 @@
+﻿@using NewsSystem.EntityFramwork
+@{
+    User person = Context.Session["User"] as User;
+}
+<script src="~/Scripts/Comment/writeComment.js"></script>
+
+        <div class="hd-comment">
+            <div class="hd-comment-right">
+                @if (person == null)
+                {
+                    <a href="javascript:showLogin()" >登录</a>
+                }
+                else
+                {
+                    <a onclick="javascript:return Logout()"> 注销 </a>
+                }
+
+            </div>
+        </div>
+        <textarea class="input-comment" id="CommentContent" name="CommentContent"></textarea>
+        <button class="btn-com" onclick="javascript:return writeComment(@ViewBag.newsId);">评论</button> 
+
+
+
+

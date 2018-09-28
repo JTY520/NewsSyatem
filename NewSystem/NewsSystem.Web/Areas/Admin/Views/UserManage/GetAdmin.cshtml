@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "GetAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+<div class="getnews">
+    <script src="~/Scripts/table.js"></script>
+    <div class="getnew">
+        <strong>管理员</strong>
+        <div class="add-icon"><a href="/Admin/UserManage/AddUser">添加用户</a></div>
+    </div>
+    <hr />
+    <table id="example" class="getnews">
+        <thead class="one-get-th">
+            <tr>
+                <th>帐号</th>
+                <th>昵称</th>
+                <th>操作</th>
+                <th>修改</th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserAccout</td>
+                        <td>@item.NickName</td>
+                        <td>
+                            <a href="/Admin/UserManage/UserDelete?account=@item.UserAccout">删除</a>
+                        </td>
+                        <td>
+                            <a href="/Admin/UserManage/UpdateToCommon?account=@item.UserAccout">设为普通用户</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <tbody class="getnew">暂无数据</tbody>
+
+        }
+    </table>
+</div>

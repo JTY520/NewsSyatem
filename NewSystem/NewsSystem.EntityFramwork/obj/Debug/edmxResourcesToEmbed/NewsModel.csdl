@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NewsSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MESDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comment" EntityType="NewsSystemModel.Comment" />
+    <EntitySet Name="meun" EntityType="NewsSystemModel.meun" />
+    <EntitySet Name="News" EntityType="NewsSystemModel.News" />
+    <EntitySet Name="NewsMenu" EntityType="NewsSystemModel.NewsMenu" />
+    <EntitySet Name="Permission" EntityType="NewsSystemModel.Permission" />
+    <EntitySet Name="User" EntityType="NewsSystemModel.User" />
+  </EntityContainer>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="NewsId" Type="Int32" Nullable="false" />
+    <Property Name="CommentPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommentContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="IsPublic" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="meun">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDelete" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirstType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecondType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CommentNumber" Type="Int32" Nullable="false" />
+    <Property Name="UpTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Writer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CheckImage" Type="Boolean" Nullable="false" />
+    <Property Name="IsDelet" Type="Boolean" />
+    <Property Name="IsPublish" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="NewsMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="Permission1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserAccout" />
+    </Key>
+    <Property Name="UserAccout" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsDelet" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="NickName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Brithday" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Autograph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NewsSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="NewsId" Type="int" Nullable="false" />
+          <Property Name="CommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommentContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentTime" Type="date" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsPublic" Type="bit" />
+        </EntityType>
+        <EntityType Name="meun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstType" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="SecondType" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CommentNumber" Type="int" Nullable="false" />
+          <Property Name="UpTime" Type="date" Nullable="false" />
+          <Property Name="Writer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CheckImage" Type="bit" Nullable="false" />
+          <Property Name="IsDelet" Type="bit" />
+          <Property Name="IsPublish" Type="bit" />
+        </EntityType>
+        <EntityType Name="NewsMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserAccout" />
+          </Key>
+          <Property Name="UserAccout" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsDelet" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="NickName" Type="nchar" MaxLength="10" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="nchar" MaxLength="10" />
+          <Property Name="Brithday" Type="date" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Autograph" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="NewsSystemModelStoreContainer">
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meun" EntityType="Self.meun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsMenu" EntityType="Self.NewsMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NewsSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MESDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comment" EntityType="NewsSystemModel.Comment" />
+          <EntitySet Name="meun" EntityType="NewsSystemModel.meun" />
+          <EntitySet Name="News" EntityType="NewsSystemModel.News" />
+          <EntitySet Name="NewsMenu" EntityType="NewsSystemModel.NewsMenu" />
+          <EntitySet Name="Permission" EntityType="NewsSystemModel.Permission" />
+          <EntitySet Name="User" EntityType="NewsSystemModel.User" />
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="NewsId" Type="Int32" Nullable="false" />
+          <Property Name="CommentPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommentContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsPublic" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="meun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SecondType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CommentNumber" Type="Int32" Nullable="false" />
+          <Property Name="UpTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Writer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckImage" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelet" Type="Boolean" />
+          <Property Name="IsPublish" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="NewsMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Permission1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserAccout" />
+          </Key>
+          <Property Name="UserAccout" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelet" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="NickName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Brithday" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Autograph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NewsSystemModelStoreContainer" CdmEntityContainer="MESDbContext">
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="NewsSystemModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
+                <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+                <ScalarProperty Name="CommentPerson" ColumnName="CommentPerson" />
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meun">
+            <EntityTypeMapping TypeName="NewsSystemModel.meun">
+              <MappingFragment StoreEntitySet="meun">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="NewsSystemModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+                <ScalarProperty Name="IsDelet" ColumnName="IsDelet" />
+                <ScalarProperty Name="CheckImage" ColumnName="CheckImage" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="UpTime" ColumnName="UpTime" />
+                <ScalarProperty Name="CommentNumber" ColumnName="CommentNumber" />
+                <ScalarProperty Name="SecondType" ColumnName="SecondType" />
+                <ScalarProperty Name="FirstType" ColumnName="FirstType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsMenu">
+            <EntityTypeMapping TypeName="NewsSystemModel.NewsMenu">
+              <MappingFragment StoreEntitySet="NewsMenu">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="NewsSystemModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Permission1" ColumnName="Permission" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="NewsSystemModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Autograph" ColumnName="Autograph" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Brithday" ColumnName="Brithday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="IsDelet" ColumnName="IsDelet" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserAccout" ColumnName="UserAccout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

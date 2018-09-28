@@ -1,0 +1,46 @@
+﻿.writeForm
+{
+    width:100%;
+    text-align:center;
+    margin:auto;
+    float:right;
+    margin-right:100px;
+}
+.inputTxt
+{
+    width:800px;
+    height:45px;
+}
+#message{
+     width:200px;
+    height:45px;
+    text-align:center;
+    margin:auto
+}
+ .SecondType{
+        display: none;
+}
+ .SecondType_first {
+       display:inline-block;
+}
+.inputText
+{
+    width:980px;
+    text-align:center;
+    height:50px;
+    line-height:50px;
+}
+
+.inputContent
+{
+    width:980px;
+    margin-top:25px;
+}
+.a-n-btn{
+    width:100px;
+    height:30px;
+    background:#0094ff;
+    font-size:16px;
+   color:#ffffff;
+}
+

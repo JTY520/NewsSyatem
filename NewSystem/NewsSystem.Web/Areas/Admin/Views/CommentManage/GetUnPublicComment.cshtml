@@ -1,0 +1,49 @@
+﻿@model  IEnumerable<NewsSystem.Web.Areas.Admin.Models.CommentViewModel>
+
+@{
+    ViewBag.Title = "GetUnPublicComment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="getnews">
+    <script src="~/Scripts/table.js"></script>
+    <div class="getnew">
+        <strong>未发布评论</strong>
+    </div>
+    <hr />
+    <table id="example" class="getnews">
+        <thead class="one-get-th">
+            <tr>
+                <th>帐号</th>
+                <th>内容</th>
+                <th>时间</th>
+                <th>新闻名字</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        @if (Model.Count() != 0)
+        {
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CommentPerson</td>
+                        <td>@item.CommentContent</td>
+                        <td>@item.CommentTime</td>
+                        <td>
+                            <a href="/Admin/NewsManage/GetOneNews?id=@item.NewsId">@item.NewsName</a>
+                        </td>
+                        <td>
+                            <a href="/Admin/CommentManage/PublicComment?id=@item.Id">发布</a>
+                            <a href="/Admin/CommentManage/DeleteComment?id=@item.Id">删除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <tbody>暂无数据</tbody>
+        }
+    </table>
+</div>
+

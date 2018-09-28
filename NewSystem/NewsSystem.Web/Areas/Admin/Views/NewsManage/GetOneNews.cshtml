@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.NewsViewModel>
+
+@{
+    ViewBag.Title = "GetOneNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/getseach.css" rel="stylesheet" />
+<link href="~/Content/comment.css" rel="stylesheet" />
+<link href="~/Content/news.css" rel="stylesheet" />
+<link href="~/Content/LunBo.css" rel="stylesheet" />
+
+<div class="one-get">
+   @foreach (var item in Model)
+   {
+    <div class="blank"></div>
+    <div class="newTitle">@item.Title</div>
+    <div class="newsTime">
+        <span>@item.Writer</span>
+        <em>|</em>
+        <span>@item.UpTime</span>
+    </div>
+    if (item.FirstType.Contains("图片") == true || item.SecondType.Contains("图片") == true)
+       {
+        <div class="article_text">
+            @*<div class="article_text img-txt">@Html.Raw(HttpUtility.HtmlDecode(item.Content))</div>*@
+            <div class="LImage">
+                <div class="demo">
+                    <a class="control prev"></a>
+                    <a class="control next abs"></a><!--自定义按钮，移动端可不写-->
+                    <div class="slider">
+                        <!--主体结构，请用此类名调用插件，此类名可自定义-->
+                        <ul>
+                            @for (int i = 0; i < item.AllImagesUrl.Count; i++)
+                            {
+                                <li><a><img src="@item.AllImagesUrl[i]" /></a></li>
+                            }
+                        </ul>
+                    </div>
+                    <script src="~/Scripts/jquery.min.js"></script>
+                    <script src="~/Scripts/Slider.jQuery.min.js"></script>
+                    <script>
+                                    $(".slider").Slider({
+                                        width: 650, //容器宽度
+                                        height: 340, //容器高度
+                                        control: $('.control'), //绑定控制按钮
+                                        during: 4000, //间隔4秒自动滑动
+                                        speed: 800, //移动速度0.8秒\
+                                        mousewheel: true, //是否开启鼠标滚轮控制
+                                        direkey: true //是否开启左右箭头方向控制
+                                    });
+                    </script>
+                </div>
+            </div>
+
+
+
+        </div>
+    }
+    else
+    {
+        <div class="article_text">@Html.Raw(HttpUtility.HtmlDecode(item.Content))</div>
+    }
+   }
+</div>

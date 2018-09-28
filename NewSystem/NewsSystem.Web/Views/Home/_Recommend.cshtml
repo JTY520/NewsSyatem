@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+
+    @if (Model != null)
+    {
+        int i = 0;
+        foreach (var item in Model)
+        {
+
+            if (i % 2 == 0)
+            {
+                <div class="tj-img-left clearfix">
+                    <a href="@item.FirstImageUrl">
+                        <img src="@item.FirstImage" />
+                        <p class="tj-text">@item.Title</p>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="tj-img-right clearfix">
+                    <a href="@item.FirstImageUrl">
+                        <img src="@item.FirstImage" />
+                        <p class="tj-text">@item.Title</p>
+                    </a>
+                </div>
+            }
+            i++;
+        }
+    }

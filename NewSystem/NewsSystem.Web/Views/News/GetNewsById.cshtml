@@ -1,0 +1,143 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+@{
+    ViewBag.Title = "GetNewsById";
+}
+<link href="~/Content/getseach.css" rel="stylesheet" />
+<link href="~/Content/comment.css" rel="stylesheet" />
+<link href="~/Content/LunBo.css" rel="stylesheet" />
+
+
+<div class="bodybody">
+    <div class="all-left">
+        @foreach (var item in Model)
+        {
+            <div class="newsContent">
+                <div class="blank"></div>
+                <div class="newTitle">@item.Title</div>
+                <div class="newsTime">
+                    <span>@item.Writer</span>
+                    <em>|</em>
+                    <span>@item.UpTime</span>
+                </div>
+                @if (item.FirstType.Contains("图片") == true || item.SecondType.Contains("图片") == true)
+                {
+                    <div class="article_text">
+                        @*<div class="article_text img-txt">@Html.Raw(HttpUtility.HtmlDecode(item.Content))</div>*@
+                        <div class="LImage">
+                            <div class="demo">
+                                <a class="control prev"></a>
+                                <a class="control next abs"></a><!--自定义按钮，移动端可不写-->
+                                <div class="slider">
+                                    <!--主体结构，请用此类名调用插件，此类名可自定义-->
+                                    <ul>
+                                        @for (int i = 0; i < item.AllImagesUrl.Count; i++)
+                                        {
+                                            <li><a><img src="@item.AllImagesUrl[i]"/></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                                <script src="~/Scripts/jquery.min.js"></script>
+                                <script src="~/Scripts/Slider.jQuery.min.js"></script>
+                                <script>
+                                    $(".slider").Slider({
+                                        width: 650, //容器宽度
+                                        height: 340, //容器高度
+                                        control: $('.control'), //绑定控制按钮
+                                        during: 4000, //间隔4秒自动滑动
+                                        speed: 800, //移动速度0.8秒\
+                                        mousewheel: true, //是否开启鼠标滚轮控制
+                                        direkey: true //是否开启左右箭头方向控制
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                       
+
+                        
+                    </div>
+                }
+                else
+                {
+                    <div class="article_text">@Html.Raw(HttpUtility.HtmlDecode(item.Content))</div>
+                }
+            </div>
+            <div class="blank1"></div>
+            <div class="comment-icon">
+                <div class="bg-comment">
+                    <a title="评论">
+                        <div class="i-comment" onclick="getComment()">
+                            <img src="~/Images/comment-w.jpg" />
+                            <span>(@item.CommentNumber)</span>
+                        </div>
+                    </a>
+                </div>
+                <script>
+            function getComment(){
+                document.getElementById("comment").style.display = "block";
+                document.getElementById("AllCom").style.display = "block";
+            }
+                </script>
+                @*<div class="bg-comment">
+                        <a href="#" title="赞">
+                            <div class="i-comment">
+                                <img src="~/Images/zan_comment.jpg" />
+                                <span>(@item.CommentNumber)</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bg-comment">
+                        <a href="#" title="弹">
+                            <div class="i-comment" style="border:none;">
+                                <img src="~/Images/tan-comment.jpg" />
+                                <span>(@item.CommentNumber)</span>
+                            </div>
+                        </a>
+                    </div>*@
+            </div>
+            <div class="commentTxt" id="comment">
+                @Html.Action("WriteComment", "Comment", new { commentNumber = item.CommentNumber, newsId = item.Id })
+            </div>
+            <div id="AllCom">
+                @Html.Action("GetAllComments", "Comment", new { commentNumber = item.CommentNumber, newsId = item.Id })
+            </div>
+        }
+        <div class="com-line"></div>
+        <div class="news-doc">
+            <img src="~/Images/news-doc.png" />
+        </div>
+        <div class="hot-today">
+            <div class="news-right-hd" style="width:650px">
+                <h3 style="width:650px">今日热图</h3>
+            </div>
+            @Html.Action("GetHotImgsToday","News")
+        </div>
+    </div>
+    <div class="all-right">
+        <div class="tuijian">
+            <div class="news-right-hd" style="margin-bottom:10px;">
+                <h3>今日推荐</h3>
+            </div>
+            @Html.Action("Recommend", "Home")
+        </div>
+        @*<div class="right-doc">
+            <img src="~/Images/21cn-doc.jpg" />
+        </div>*@
+        <div class="hot-point">
+            <div class="news-right-hd">
+                <h3>今日热点</h3>
+            </div>
+            @Html.Action("HotPoint","Home")
+        </div>
+    </div>
+    </div>
+<div class="foot">
+    <div class="foot-img">
+        @Html.Action("GetFootImages","Home")
+    </div>
+    <div class="foot-bottom">
+        <div class="foot-ft">
+            <img src="~/Images/dianxin-logo.png" />
+            <p>经营许可证编号: 粤B2-20040116 不良信息举报：[点击联系]客户服务 世纪龙信息网络有限责任公司版权所有</p>
+        </div>
+    </div>
+</div>

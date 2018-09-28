@@ -1,0 +1,31 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsTypeViewModel>
+
+<div class="second">
+    @foreach (var item in Model)
+    {
+        <div class="secondMenu">
+            <h3>@item.Name</h3>
+            <span class="more">
+                @foreach (var m in item.Children)
+                {
+                    <a href="@m.Url">@m.Name</a>
+                }
+            </span>
+        </div>
+        if (item.Children.Count >= 2)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                <div class="secondMenuList">
+                    @Html.Action("TypePart", new { firstType = item.Name, secondType = item.Children[i].Name })
+                </div>
+            }
+        }
+        else
+        {
+            <div class="secondMenuList">
+                @Html.Action("TypePart", new { firstType = item.Name, secondType = item.Children[0].Name })
+            </div>
+        }
+    }
+</div>

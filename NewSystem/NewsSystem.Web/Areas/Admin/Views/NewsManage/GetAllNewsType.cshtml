@@ -1,0 +1,86 @@
+﻿@model  IEnumerable<NewsSystem.Web.Areas.Admin.Models.NewsTypeViewModel>
+
+
+@{
+    ViewBag.Title = "GetAllNewsType";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/newsType.css" rel="stylesheet" />
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+<!--引入JavaScript-->
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/table.js"></script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/NewsTypeManage/newsType.js"></script>
+
+<script>
+    $('#AddTypeModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) 
+    })
+</script>
+
+<div class="modal fade" id="AddTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   @Html.Partial("_AddNewsType")
+</div>
+
+<div class="getnew">
+    <strong>新闻类型</strong>
+    <div class="add-icon">
+        <a data-toggle="modal" data-target="#AddTypeModal">添加新闻类型</a>
+    </div> 
+</div>
+<hr />
+<div class="getnews">
+    <table id="example"border="1" class="getnews">
+        <thead class="one-get-th">
+            <tr>
+                <th>新闻类型(parent)</th>
+                <th>新闻类型(son)</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody >
+            @foreach (var item in Model)
+            {
+                <tr style="border-bottom:1px solid" class="type-tr">
+                    <td>@item.Name</td>
+                    <td>
+                        @if (item.Chlidren.Count != 0)
+                        {
+                            <table class="type-child-tab">
+                                @foreach (var kid in item.Chlidren)
+                                {
+                                    <tr>
+                                        <td>
+                                            @kid.Name
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/NewsManage/DeleteNewType?id=@kid.Id">删除</a>
+                                            <a href="/Admin/NewsManage/UpdateNewsType?id=@kid.Id">修改</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <span>无</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="/Admin/NewsManage/DeleteNewType?id=@item.Id">删除</a>
+                        <a href="/Admin/NewsManage/UpdateNewsType?id=@item.Id">修改</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

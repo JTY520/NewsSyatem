@@ -1,0 +1,90 @@
+﻿.gettb
+{
+    height:900px;
+    color:white;
+    margin:auto;
+    border-bottom:1px #ffffff;
+}
+.gettb tr td
+{
+    font-size:16px;
+    color:white;
+    height:45px;
+    width:120px;
+    text-align:center;
+}
+.pagetb
+{
+    margin:auto;
+    color:#ffffff;
+}
+
+.getnews
+{
+    height:100%;
+    width:100%;
+}
+.pagetb span
+{
+    height: 20px;
+    line-height: 20px;
+    color:black;
+}
+.getnew
+{
+    list-style:none;
+    font-size:16px;
+    width:1000px;
+    margin: auto;
+    height:90px;
+    padding-top:20px;
+    text-align:center;
+    line-height:90px;
+    overflow: hidden;
+    position: relative;
+     font-family: 微软雅黑, Arial, HELVETICA;
+} 
+.getnew ul 
+{
+  list-style:none;
+  height:90px;
+  position:absolute;
+  margin:0;
+}
+.getnew ul li
+{
+    list-style:none;
+    height:90px;
+    width: 150px;
+    float:left;
+    text-align:center;
+    line-height:90px;
+    cursor:pointer;
+     color:#1e282c;
+}
+
+.add-icon{
+    float:right;
+    width:100px;
+    height:60px;
+    font-size:16px;
+}
+.add-icon a{
+    cursor:pointer;
+}
+
+.one-get{
+    width:650px;
+    height:100%;
+    margin:auto;
+    padding-top:30px;
+}
+.one-get-th tr th
+{
+    text-align:center
+}
+.getnews table tbody tr {
+    border-bottom:1px solid;
+}
+
+

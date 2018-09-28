@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+<div class="hot-list">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <p class="hot-txt"><a href="@item.FirstImageUrl">@item.Title</a></p>
+                <a class="hot-img" href="@item.FirstImageUrl">
+                     <img src="@item.FirstImage" />
+                </a>
+            </li>
+        }
+        
+    </ul>
+</div>

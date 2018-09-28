@@ -1,0 +1,38 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.NewsTypeViewModel>
+
+@{
+    ViewBag.Title = "UpdateNewsType";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/newsType.css" rel="stylesheet" />
+<script src="~/Scripts/NewsTypeManage/newsType.js"></script>
+<div class="getnew">
+    <strong>修改该新闻类型</strong>
+    <div class="add-icon">
+        <a data-toggle="modal" data-target="#AddTypeModal">添加新闻类型</a>
+    </div>
+</div>
+
+
+<div class="type-update" >
+    <select class="add-type-select" id="UpdateNewsTypeParentId" name="ParentId">
+        @if (ViewBag.ParentName == null)
+        {
+            <option value="@ViewBag.ParentId" selected>无</option>
+        }
+        else
+        {
+            <option value="@ViewBag.ParentId" selected>@ViewBag.ParentName</option>
+        }
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        }
+    </select>
+    <input class="add-type-name" id="UpdateNewsTypeName" type="text" name="Name" value="@ViewBag.TypeName" />
+    <button class="add-type-btn" type="button" onclick="javascript: return UpdateType(@ViewBag.Id);">提交</button>
+</div>    
+      

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+<link href="~/Content/LunBo.css" rel="stylesheet" />
+
+<a class="control prev"></a>
+<a class="control next abs"></a><!--自定义按钮，移动端可不写-->
+<div class="slider">
+    <!--主体结构，请用此类名调用插件，此类名可自定义-->
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="@item.FirstImageUrl"><img src="@item.FirstImage" alt="@item.Title" /></a></li>
+        }
+    </ul>
+</div>
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/Slider.jQuery.min.js"></script>
+<script>
+$(".slider").Slider({
+	width:650, //容器宽度
+	height:340, //容器高度
+	control:$('.control'), //绑定控制按钮
+	during:4000, //间隔4秒自动滑动
+	speed:800, //移动速度0.8秒
+	mousewheel:true, //是否开启鼠标滚轮控制
+	direkey:true //是否开启左右箭头方向控制
+});
+</script>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+<div class="foot-pic clearfix">
+    <ul>
+        @foreach(var item in Model)
+        {
+            <li>
+                <a href="@item.FirstImageUrl">
+                    <img src="@item.FirstImage" />
+                    <em>
+                        @item.Title
+                    </em>
+                </a>
+            </li>
+        }
+        <li>
+            <img src="~/Images/21cn-二维码.png" />
+            <em>头条新闻易信公共号</em>
+        </li>
+    </ul>
+</div>

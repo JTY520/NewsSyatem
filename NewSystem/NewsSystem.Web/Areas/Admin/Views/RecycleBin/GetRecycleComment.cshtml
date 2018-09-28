@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<NewsSystem.Web.Areas.Admin.Models.CommentViewModel>
+
+@{
+    ViewBag.Title = "GetRecycleComment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="getnews">
+    <script src="~/Scripts/table.js"></script>
+    <div class="getnew">
+        <strong>已回收评论</strong>
+    </div>
+    <hr />
+    <table id="example" class="getnews">
+        <thead class="one-get-th">
+            <tr>
+                <th>帐号</th>
+                <th>内容</th>
+                <th>时间</th>
+                <th>新闻名字</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        @if (Model.Count() != 0)
+        {
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CommentPerson</td>
+                        <td>@item.CommentContent</td>
+                        <td>@item.CommentTime</td>
+                        <td>
+                            <a href="/Admin/NewsManage/GetOneNews?id=@item.NewsId">@item.NewsName</a>
+                        </td>
+
+                        <td>
+                            <a href="/Admin/RecycleBin/CommentRecover?id=@item.Id">还原</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            <tbody>暂无数据</tbody>
+        }
+    </table>
+</div>

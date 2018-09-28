@@ -1,0 +1,32 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+<div class="partLeft">
+   
+    @if (Model != null)
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                if (item.CheckImage == false)
+                {
+                    <li>
+                        <a href="/News/GetNewsById?@item.Id">@item.Title</a>
+                    </li>
+                }
+            }
+        </ul>
+    }
+   
+</div>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        if (item.CheckImage == true)
+        {
+             <div class="partRight">
+                  <a href="/News/GetNewsById?id=@item.Id"><img src="@item.FirstImage" alt="@item.Title" /></a>
+             </div>
+        }
+    }
+}

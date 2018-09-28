@@ -1,0 +1,63 @@
+﻿@using NewsSystem.EntityFramwork
+@{
+    User person = Context.Session["Admin"] as User;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type"  content="application/x-javascript; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/skin-blue.min.css" rel="stylesheet" />
+    <link href="~/Content/_all-skins.min.css" rel="stylesheet" />
+    <link href="~/Content/morris.css" rel="stylesheet" />
+    <link href="~/Content/news.css" rel="stylesheet" />
+    <link href="~/Content/Account.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <title>新闻后台管理</title>
+</head>
+<body class="skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header" style="position:fixed;width:100%">
+            <a href="#" class="logo">
+                <span class="logo-lg">
+                    <b>新闻管理</b>
+                </span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-custom-menu div-login">
+                    @if(person==null)
+                    {
+                        <span><a href="/Admin/Account/Lodin">登陆</a></span>
+                    }
+                    else
+                    {
+                        <span>@person.UserAccout,欢迎你</span>
+                    }
+                    <em>|</em>
+                    <span><a href="/Admin/UserManage/Logout">注销</a></span>
+                </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar" style="position:fixed;">
+            <section class="sidebar">
+                @Html.Action("Meun", "Menu")
+            </section>
+        </aside>
+        <div style="margin-top:50px;margin-left:230px;text-align:center;background:#fff">
+            @RenderBody()
+        </div>
+        <script src="~/Scripts/app.js"></script>
+    </div>
+</body>
+</html>

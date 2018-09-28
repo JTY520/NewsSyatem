@@ -1,0 +1,42 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.CommentViewModel>
+
+<link href="~/Content/comment.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+            <li>
+                <div class="com-user">
+                    <img src="~/Images/img-user.jpg" />
+                    <p><span>@item.CommentPerson</span></p>
+                    @if (item.IsPublic == false)
+                    {
+                        <p><span>正在审核中</span></p>
+                    }
+                </div>
+                <div class="com-con">
+                    <p>@item.CommentContent</p>
+                </div>
+                <div class="com-ft">
+                    @item.CommentTime
+                    <button id="reply-btn"  name="reply">回复</button>
+                </div>
+                <div class="replyTxt" name="replyTxt">
+                    <form>
+                        <textarea class="input-reply" name="CommentContent" style="width:100%">
+                        </textarea>
+                        <button class="btn-com" name="replyBtn" onclick="return Reply(@item.NewsId,@item.Id);">回复</button>
+                    </form>
+                </div>
+                @if (item.CommentsChildren!=null)
+                {
+                    <ul class="com-reply">
+                        @Html.Partial("_GetCommentsChildren", item.CommentsChildren)
+                    </ul>
+                }
+            </li>
+
+        }
+}
+ 

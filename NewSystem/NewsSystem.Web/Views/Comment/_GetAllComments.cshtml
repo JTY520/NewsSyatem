@@ -1,0 +1,77 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.CommentViewModel>
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/Comment/comment.js"></script>
+<script src="~/Scripts/Comment/reply.js"></script>
+<div class="clilkLook" id="lookCom" onclick="getAllCom()">
+    查看所有评论
+</div>
+
+<div id="getCom">
+    <div class="com-type">
+        <em>最新评论</em>
+    </div>
+@if (ViewBag.commentNumber < 0)
+{
+    <div class="com-none">
+        <a href="#">还没有评论，抢占沙发</a>
+    </div>
+}
+else
+{
+    <div class="clilkCheck" >
+        @if (ViewBag.commentNumber > 0)
+        {
+            <div class="allComments">
+                <div class="getcomments">
+                    <div class="newcomment" id="newcomment">
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <div class="com-user">
+                                        <img src="~/Images/img-user.jpg" />
+                                        <p><span>@item.CommentPerson</span></p>
+                                       @if(item.IsPublic == false)
+                                       {
+                                           <p><span>正在审核中</span></p>
+                                       }
+                                    </div>
+                                    <div class="com-con">
+                                        <p>@item.CommentContent</p>
+                                    </div>
+                                    <div class="com-ft">
+                                        <p>@item.CommentTime</p>
+                                        <button id="reply-btn" name="reply">回复</button>
+                                    </div>
+                                    <div  class="replyTxt" name="replyTxt">
+                                         <form>
+                                               <textarea class="input-reply" name="CommentContent" style="width:100%">
+                                                   
+                                               </textarea>
+                                               <button class="btn-com" name="replyBtn" onclick="return Reply(@item.NewsId,@item.Id);">回复</button>
+                                         </form>
+                                    </div>
+                                    @if (item.CommentsChildren.Count>0)
+                                    {
+                                        <ul class="com-reply">
+                                            @Html.Partial("_GetCommentsChildren", item.CommentsChildren)
+                                        </ul>  
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="com-none">
+                <a>还没有评论，抢占沙发吧</a>
+            </div>
+        }
+    </div>
+}
+</div>
+
+

@@ -1,0 +1,124 @@
+﻿@model  PagedList.IPagedList<NewsSystem.Web.Models.NewsViewModel>
+@using PagedList.Mvc
+@{
+
+    ViewBag.Title = "GetNewsBySearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/getseach.css" rel="stylesheet" />
+<link href="~/Content/news.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<div class="bodybody">
+    <div class="all-left">
+        <div class="sea-resultlist">
+            <div class="sea-result">
+                <p>
+                    获得约<span class="sea-num">@Model.TotalItemCount.ToString()</span>条记录
+                </p>
+            </div>
+            <div class="sea-line"></div>
+            @foreach (var item in Model)
+            {
+            <div class="seach-list clearfix">
+                @if (item.CheckImage == false)
+                {
+                    <h3>
+                        <a href="/News/GetNewsById?id=@item.Id">@item.Title</a>
+                    </h3>
+                    @*<p class="p-content">
+                        </p>*@
+                    <div class="p-foot">
+                        <span class="p-time">@item.UpTime</span>
+                        <span class="p-time">@item.Writer</span>
+                        <span>
+                            <em><a href="/News/GetNewsByType?type=@item.SecondType">@item.SecondType</a></em>
+                            <em>@item.Writer</em>
+                        </span>
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="p-pic">
+                        <a href="/News/GetNewsById?id=@item.Id">
+                             <img src="@item.FirstImage" />
+                        </a>
+                    </div>
+                    <div class="p-text">
+                        <h3>
+                           <a href="/News/GetNewsById?id=@item.Id">@item.Title</a>
+                        </h3>
+                        @*<p class="p-content">
+                            </p>*@
+                        <div class="p-foot">
+                            <span class="p-time">@item.UpTime</span>
+                            <span class="p-time" style="border:none">@item.Writer</span>
+                            <span>
+                                <em><a href="/News/GetNewsByType?type=@item.SecondType">@item.SecondType</a></em>
+                                <em>@item.Writer</em>
+                            </span>
+                        </div>
+                    </div>
+                    }
+            </div>
+            }
+
+        </div>
+        @if (Model.Count > 0)
+        {
+            <table class="pagetb p-page">
+                <tr>
+                    <td><span>共 @Model.TotalItemCount.ToString() 条记录</span></td>
+                    <td>
+                        @Html.PagedListPager(Model, page => Url.Action("GetNewsByType", new { type = ViewBag.Type, page }),
+                                   new PagedListRenderOptions()
+                                   {
+                                       LinkToFirstPageFormat = "首页",
+                                       LinkToNextPageFormat = "下一页",
+                                       LinkToPreviousPageFormat = "上一页",
+                                       LinkToLastPageFormat = "末页",
+                                       DisplayItemSliceAndTotal = false
+                                   })
+                    </td>
+
+                </tr>
+            </table>
+        <div class="sea-line"></div>
+        }
+       
+        
+        <div class="hot-today">
+            <div class="news-right-hd" style="width:650px">
+                <h3 style="width:650px">精彩图集</h3>
+            </div>
+            @Html.Action("GetHotImgsToday", "News")
+        </div>
+    </div>
+    <div class="all-right">
+        <div class="tuijian">
+            <div class="news-right-hd" style="margin-bottom:10px;">
+                <h3>今日推荐</h3>
+            </div>
+            @Html.Action("Recommend", "Home")
+        </div>
+        <div class="right-doc">
+            <img src="~/Images/21cn-doc.jpg" />
+        </div>
+        <div class="pic-coquettish">
+            <dic class="news-right-hd">
+                <h3>图领风骚</h3>
+            </dic>
+            @Html.Action("PicCoquettish", "Home")
+        </div>
+    </div>
+</div>
+<div class="foot">
+    <div class="foot-img">
+        @Html.Action("GetFootImages", "Home")
+    </div>
+    <div class="foot-bottom">
+        <div class="foot-ft">
+            <img src="~/Images/dianxin-logo.png" />
+            <p>经营许可证编号: 粤B2-20040116 不良信息举报：[点击联系]客户服务 世纪龙信息网络有限责任公司版权所有</p>
+        </div>
+    </div>
+</div>

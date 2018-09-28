@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.NewsViewModel>
+
+@{
+    ViewBag.Title = "NewsUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/UI/lang/zh-cn/zh-cn.js"></script>
+<script src="~/UI/ueditor.config.js"></script>
+<script src="~/UI/ueditor.all.min.js"></script>
+<link href="~/Content/writeNews.css" rel="stylesheet" />
+@foreach (var item in Model)
+{
+    <form action="/Admin/NewsManage/NewsUpDate" method="post">
+        <div class="inputText">
+            新闻名称：<input class="inputTxt" type="text" name="Title" id="Title" value="@item.Title" />
+        </div>
+        <hr />
+        <div class="inputText">
+            新闻作者：<input class="inputTxt" type="text" name="Writer" id="Writer" value="@item.Writer" />
+        </div>
+        <hr />
+        <div class="inputText">
+            上传时间：<input class="inputTxt" style="width:600px;" type="text" name="UpTime" id="UpTime" value="@item.UpTime" />
+            新闻类型：
+            <script src="~/Scripts/PCASClass.js"></script>
+            <select name="FirstType"></select><select name="SecondType"></select>
+            <script language="javascript" defer>
+                    new PCAS("FirstType", "SecondType");
+            </script>
+        </div>
+        <hr />
+        <script class="inputContent" id="editor" name="Content" value="@Html.Raw(HttpUtility.HtmlDecode(item.Content))" type="text/plain">
+        </script>
+        <script type="text/javascript">
+                //var ue = UE.getEditor('editor');
+                var ue = UE.getEditor('editor');
+        </script>
+        <hr />
+        <div id="message"></div>
+        <button style="width:100px;height:30px;background:#0094ff;font-size:16px;color:#ffffff;" type="submit">提交</button>
+    </form>
+}

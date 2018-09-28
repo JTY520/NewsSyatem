@@ -1,0 +1,125 @@
+﻿@model  PagedList.IPagedList<NewsSystem.Web.Models.NewsViewModel>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "GetNewsBySearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/getseach.css" rel="stylesheet" />
+<link href="~/Content/news.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<div class="blank1"></div>
+@*<div class="sea-typelist">
+    <a href="#">全部</a>
+    <span>|</span>
+    <a href="#">资讯</a>
+    <span>|</span>
+    <a href="#">图片</a>
+</div>*@
+<div class="bodybody">
+    <div style="width:650px;margin:auto;height:100%">
+        <form class="f-sea" action="/News/GetNewsBySearch" method="post">
+            <div class="sea-box">
+                <input type="text" class="sea-input" value="@ViewBag.SeachName" name="str" />
+                @*<div class="sea-type">
+                    <select name="range">
+                        <option>全部</option>
+                        <option>资讯</option>
+                        <option>图片</option>
+                    </select>
+                </div>*@
+                <button type="submit" class="sea-btn"></button>
+
+            </div>
+        </form>
+        <div class="sea-result">
+            <p>
+                获得约<span class="sea-num">@Model.TotalItemCount.ToString()</span>条记录
+            </p>
+        </div>
+        <div class="sea-resultlist">
+            <div class="sea-line"></div>
+            @foreach (var item in Model)
+            {
+                <div class="seach-list clearfix">
+                    @if (item.CheckImage == false)
+                {
+                        <div class="p-text">
+                            <h3>
+                                @item.Title
+                            </h3>
+                            @*<p class="p-content">
+                            </p>*@
+                            <div class="p-foot">
+                                <p>
+                                    <span class="p-time"> 日期：@item.UpTime</span>
+                                    <span class="p-time" style="border:none">来源：@item.Writer</span>
+                                </p>
+                                <p class="p-type">
+                                    标签：<em>@item.SecondType</em>
+                                    <em>@item.Writer</em>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="p-pic">
+                            <img src="@item.FirstImage" />
+                        </div>
+                        <div class="p-text">
+                            <h3>
+                                @item.Title
+                            </h3>
+                            @*<p class="p-content">
+                            </p>*@
+                            <div class="p-foot">
+                                <p>
+                                    <span class="p-time"> 日期：@item.UpTime</span>
+                                    <span class="p-time" style="border:none">来源：@item.Writer</span>
+                                </p>
+                                <p class="p-type">
+                                    标签：<em>@item.SecondType</em>
+                                    <em>@item.Writer</em>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div style="width:650px;height:100%;float:left">
+            <table class="pagetb p-page">
+                <tr>
+                    <td><span>共 @Model.TotalItemCount.ToString() 条记录</span></td>
+                    <td>
+                        @Html.PagedListPager(Model, page => Url.Action("GetNewsBySearch", new { str = ViewBag.SeachName, page }),
+                                   new PagedListRenderOptions()
+                                   {
+                                       LinkToFirstPageFormat = "首页",
+                                       LinkToNextPageFormat = "下一页",
+                                       LinkToPreviousPageFormat = "上一页",
+                                       LinkToLastPageFormat = "末页",
+                                       DisplayItemSliceAndTotal = false
+                                   })
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="foot">
+    <div class="foot-img">
+        @Html.Action("GetFootImages", "Home")
+    </div>
+    <div class="foot-bottom">
+        <div class="foot-ft">
+            <img src="~/Images/dianxin-logo.png" />
+            <p>经营许可证编号: 粤B2-20040116 不良信息举报：[点击联系]客户服务 世纪龙信息网络有限责任公司版权所有</p>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.CommentViewModel>
+
+@{
+    ViewBag.Title = "GetAComment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="one-get">
+    @foreach(var item in Model)
+    {
+        <div>@item.CommentPerson</div>
+        <div>@item.CommentTime</div>
+        <div>@item.CommentContent</div>
+        <div><a href="/Admin/NewsManage/GetOneNews?id=@item.NewsId">@item.NewsName</a></div>
+    }
+</div>

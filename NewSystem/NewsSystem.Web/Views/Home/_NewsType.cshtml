@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsTypeViewModel>
+
+<div class="meun">
+    <div class="meun-center">
+        <ul id="meun-center">
+            @if (Model != null)
+            {
+            <li>
+                <a href="/Home/Index">首页</a>
+            </li>
+                foreach (var item in Model)
+                {
+
+                        <li>
+                            <a href="/News/GetNewsByType?type=@item.Name">@item.Name</a>
+                        </li>
+                }
+            }
+            <li>
+                <a class="more-btn" onclick="onBtn()"> >> </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="" 
+
+<script>
+
+    function onBtn() {
+        if (document.getElementById("more-meun").style.display == "block")
+            document.getElementById("more-meun").style.display = "none";
+        else
+            document.getElementById("more-meun").style.display = "block";
+    }
+</script>
+<script>
+    function firstPage(model) {
+        var first = document.createElement("ul");
+        var str = "";
+        for (var i = 0; i < 10; i++) {
+            str = str + "<li>" + model[i].Name+"</li>"
+        }
+    }
+    function pageShow() {
+        $.get("Home/Index/NewsType", function (date) {
+            if(date.size())
+            firstPage(date);
+        });
+    }
+
+    function newsType() {
+        var page = (@Model.Count() + 1) / 11
+        if ((@Model.Count() + 1) % 11)>0{
+        
+        }
+    }
+</script>

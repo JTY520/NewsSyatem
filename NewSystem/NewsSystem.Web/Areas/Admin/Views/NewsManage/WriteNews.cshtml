@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NewsSystem.Web.Areas.Admin.Models.NewsViewModel>
+@{
+    ViewBag.Title = "WriteNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/UI/lang/zh-cn/zh-cn.js"></script>
+<script src="~/UI/ueditor.config.js"></script>
+<script src="~/UI/ueditor.all.min.js"></script>
+<link href="~/Content/writeNews.css" rel="stylesheet" />
+@*<script>
+        $.post("/Admin/News/WriteNews", params, function (data) {//url是你控制器中的action，例如：/控制器/Home）
+            alert(data.msg);
+        })value="@Html.Raw(HttpUtility.HtmlDecode(item.Content))"
+    </script>*@
+
+    <hr />
+    <form action="/Admin/NewsManage/WriteNews" method="post" onsubmit="return check()">
+        <div class="inputText">
+            新闻名称：<input class="inputTxt" type="text" name="Title" id="Title" />
+        </div>
+        <hr />
+        <div class="inputText">
+            新闻作者：<input  class="inputTxt" type="text" name="Writer" id="Writer" />
+        </div>
+        <hr />
+        <div class="inputText">
+            上传时间：<input class="inputTxt"style="width:600px;" type="text" name="UpTime" id="UpTime" />
+            新闻类型：
+            <script src="~/Scripts/PCASClass.js"></script>
+            <select name="FirstType"></select><select name="SecondType"></select>
+            <script language="javascript" defer>
+                    new PCAS("FirstType", "SecondType");
+            </script>
+        </div>
+        <hr />
+            <script class="inputContent" id="editor" name="Content" type="text/plain">
+            </script>
+        <script type="text/javascript">
+                //var ue = UE.getEditor('editor');
+                var ue = UE.getEditor('editor');
+        </script>
+        <hr />
+        <div id="message"></div>
+        <button style="width:100px;height:30px;background:#0094ff;font-size:16px;color:#ffffff;" type="submit">提交</button>
+    </form>
+
+<script>
+    function check() {
+        if (document.getElementById("Title") == "") {
+            document.getElementById("message").innerHTML = "题目不能为空";
+            return false;
+        }
+        else if (document.getElementById("Writer") == "") {
+            document.getElementById("message").innerHTML = "作者不能为空";
+            return false;
+        }
+        else if (document.getElementById("UpTime") == "") {
+            document.getElementById("message").innerHTML = "时间不能为空";
+            return false;
+        }
+        else if (document.getElementById("FirstType") == "") {
+            document.getElementById("message").innerHTML = "类型不能为空";
+            return false;
+        }
+        else if (document.getElementById("editor") == "") {
+            document.getElementById("message").innerHTML = "内容不能为空";
+            return false;
+        }
+        return true;
+    }
+</script>

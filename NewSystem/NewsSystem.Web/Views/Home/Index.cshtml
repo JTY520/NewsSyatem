@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="bodybody">
+    <div class="all-left">
+        <div class="LImage">
+            <div class="demo">
+                @Html.Action("LunBoThreeImages")
+            </div>
+        </div>
+        <div class="gdimg">
+            @Html.Action("GunDongImages")
+        </div>
+        <div class="blank2"></div>
+        <div>
+            @Html.Action("SecondType")
+        </div>
+    </div>
+    <div class="all-right">
+        <div class="tuijian">
+            <div class="right-hd">
+                <h3>今日推荐</h3>
+            </div>
+            @Html.Action("Recommend")
+        </div>
+        <div class="hot-point">
+            <div class="right-hd">
+                <h3>今日热点</h3>
+            </div>
+            @Html.Action("HotPoint")
+        </div>
+        <div class="right-doc">
+            <img src="~/Images/21cn-doc.jpg" />
+        </div>
+        <div class="pic-coquettish">
+            <dic class="right-hd">
+                <h3>图领风骚</h3>
+            </dic>
+            @Html.Action("PicCoquettish")
+        </div>
+    </div>
+</div>
+<div class="foot">
+    <div class="foot-img">
+        @Html.Action("GetFootImages")
+    </div>
+    <div class="foot-bottom">
+        <div class="foot-ft">
+            <img src="~/Images/dianxin-logo.png" />
+            <p>经营许可证编号: 粤B2-20040116 不良信息举报：[点击联系]客户服务 世纪龙信息网络有限责任公司版权所有</p>
+        </div>
+    </div>
+</div>

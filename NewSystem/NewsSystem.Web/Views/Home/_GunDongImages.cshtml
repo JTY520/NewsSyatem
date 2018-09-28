@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NewsSystem.Web.Models.NewsViewModel>
+
+<link href="~/Content/gundong.css" rel="stylesheet" />
+<div class="scrolllist" id="s1">
+    <div class="gd-pic">
+        <h3>图片</h3>
+        <a class="abtn aleft" href="#left" title="左移"></a>
+        <a class="abtn aright" href="#right" title="右移"></a>
+    </div>
+    <div class="imglist_w">
+        <ul class="imglist">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@item.FirstImageUrl" title="@item.Title"><img  alt="@item.Title" src="@item.FirstImage" /></a>
+                    <p><a href="@item.FirstImageUrl">@item.Title</a></p>
+                </li>
+            }  
+        </ul>
+    </div>
+    <script src="~/Scripts/jquery-1.4.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/gundong.js"></script>
+    <script type="text/javascript">
+	$(function(){
+		//默认状态下左右滚动
+		$("#s1").xslider({
+			unitdisplayed:4,
+			movelength:1,
+			unitlen:176,
+			autoscroll:3000
+		})
+	})
+    </script>
+</div>
